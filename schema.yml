@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Your Project API
+  title: Inventory Management System
   version: 1.0.0
-  description: Your project description
+  description: Api to manage inventory items and suppliers
 paths:
   /inventory_items/:
     get:
@@ -237,6 +237,26 @@ paths:
                 $ref: '#/components/schemas/Suppliers'
           description: ''
   /suppliers/{id}/:
+    get:
+      operationId: suppliers_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this suppliers.
+        required: true
+      tags:
+      - suppliers
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suppliers'
+          description: ''
     put:
       operationId: suppliers_update
       parameters:
@@ -318,6 +338,9 @@ components:
     Suppliers:
       type: object
       properties:
+        id:
+          type: integer
+          readOnly: true
         name:
           type: string
           maxLength: 1000
@@ -334,6 +357,7 @@ components:
             type: integer
       required:
       - address
+      - id
       - name
       - phone_number
       - supplies

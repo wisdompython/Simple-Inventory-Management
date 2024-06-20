@@ -63,7 +63,7 @@ class SuppliersSerializer(serializers.ModelSerializer):
             instance.supplies.set(supplies)
         
         instance.name = validated_data.get('name', instance.name)
-        instance.address = validated_data.get('address', instance.name)
+        instance.address = validated_data.get('address', instance.address)
         instance.phone_number = validated_data.get('phone_number', instance.phone_number)
         instance.save()
         return instance

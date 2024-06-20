@@ -17,7 +17,10 @@
     python manage.py spectacular --file schema.yml
 
     ```
-4. Run the development server:
+4. to run test cases:
+
+    ``` python manage.py test``
+5. Run the development server:
     runs on localhost and port 8000 by default
     ```
     python manage.py runserver
